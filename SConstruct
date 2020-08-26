@@ -4,7 +4,10 @@ import atexit, os, sys
 sys.path.insert(0,'./framework')
 import bldutil, configure, setenv, rsf.doc
 
-env = Environment()
+env = Environment(
+    CPPPATH=['/prog/sdpsoft/libraries-1/include/X11'],
+    #LIBPATH=['/home/dja/ocr/lib'],
+    #LIBS=['iulib'])
 
 if os.path.isfile('config.py'):
     import config
@@ -34,6 +37,7 @@ opts.Add('RSFROOT','RSF installation root',root)
 opts.Update(env)
 
 if not os.path.isfile('config.py'):
+    print("OVERWRITING ENVIRONMENT!")
     conf = Configure(env,custom_tests={'CheckAll':configure.check_all})
     conf.CheckAll()
     env = conf.Finish()
