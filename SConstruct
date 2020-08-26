@@ -7,7 +7,8 @@ import bldutil, configure, setenv, rsf.doc
 env = Environment(
     CPPPATH=['/prog/sdpsoft/libraries-1/include/X11'],
     #LIBPATH=['/home/dja/ocr/lib'],
-    #LIBS=['iulib'])
+    #LIBS=['iulib']
+)
 
 if os.path.isfile('config.py'):
     import config
